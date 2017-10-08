@@ -1,14 +1,23 @@
 # CocktailMix
-A "ThermoMix" for cocktails on Arduino base.
+An Arduino-based "Thermomix" for cocktails.
 
-Display:
-Nextion NX3224T024_011R
-https://nextion.itead.cc
+## Requirements
+##### Required hardware
+- Arduino board (e.g. Arduino Nano)
+- [Nextion NX3224T024_011R](https://nextion.itead.cc) touch display
+- HX711 digital scale
 
-Scale sensor:
-HX711AD Sensor 24 bit AD module
-e.g. http://www.ebay.de/itm/1KG-Waage-Wiegesensor-Wagezelle-mit-HX711AD-Gewicht-Sensor-24bit-AD-Modul-/142311366775
+##### Required software
+- [Arduino IDE](https://www.arduino.cc/en/Main/Software) for programming your board
+- [HX711 Arduino library](https://github.com/bogde/HX711)
+- [Nextion Arduino library](https://github.com/bborncr/nextion)
+- [Nextion Editor](https://nextion.itead.cc/resources/download/nextion-editor/) for editing the screen contents
+
+## Getting Started
+Flash the *screens.HMI* (located in the Nextion folder) to the display using the Nextion Editor.
+
+Fire up the Arduino IDE and add both Arduino libraries to the IDE by adding them via `Sketch > Include Library > Add .ZIP Library...` and selecting the downloaded ZIP folders.
+
+Now load the *CocktailMix.ino* and Upload it to your Arduino board.
 
 
-Sensor library:
-https://github.com/bogde/HX711
