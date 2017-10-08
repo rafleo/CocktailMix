@@ -1,5 +1,7 @@
 # CocktailMix
-An Arduino-based "Thermomix" for cocktails.
+An Arduino-based *Thermomix* for cocktails.
+
+Get instructions on how to make a cocktail on a touch display and measure the correct quantity for ingredients using a digital scale.
 
 ## Requirements
 ##### Required hardware
@@ -18,6 +20,5 @@ Flash the *screens.HMI* (located in the Nextion folder) to the display using the
 
 Fire up the Arduino IDE and add both Arduino libraries to the IDE by adding them via `Sketch > Include Library > Add .ZIP Library...` and selecting the downloaded ZIP folders.
 
-Now load the *CocktailMix.ino* and Upload it to your Arduino board.
-
+Now load the *CocktailMix.ino*, check the configuration for the correct pinout and then upload the sketch to your Arduino board.
 
