@@ -7,7 +7,7 @@ Get instructions on how to make a cocktail on a touch display and measure the co
 ##### Required hardware
 - Arduino board (e.g. Arduino Nano)
 - [Nextion NX3224T024_011R](https://nextion.itead.cc) touch display
-- HX711 digital scale
+- HX711 weighing sensor
 
 ##### Required software
 - [Arduino IDE](https://www.arduino.cc/en/Main/Software) for programming your board
@@ -15,7 +15,16 @@ Get instructions on how to make a cocktail on a touch display and measure the co
 - [Nextion Arduino library](https://github.com/bborncr/nextion)
 - [Nextion Editor](https://nextion.itead.cc/resources/download/nextion-editor/) for editing the screen contents
 
+## Schematic
+
+Wire up your Arduino as shown.
+
+<img src="https://user-images.githubusercontent.com/3229505/31336771-a75f9b7e-acf8-11e7-93cc-3f0503d85961.png" width="400">
+
+The HX711 weighing sensor must be connected to i2c pins, A4 and A5 on the Arduino Nano.
+
 ## Getting Started
+
 Flash the *screens.HMI* (located in the Nextion folder) to the display using the Nextion Editor.
 
 Fire up the Arduino IDE and add both Arduino libraries to the IDE by adding them via `Sketch > Include Library > Add .ZIP Library...` and selecting the downloaded ZIP folders.
