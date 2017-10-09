@@ -21,9 +21,9 @@
 #include <HX711.h>
 
 
-// --------------------------------- //
-// Load variables                    //
-// --------------------------------- //
+/**********************************
+  Load variables
+***********************************/
 
 // Nextion TX to pin 2 and RX to pin 3 of Arduino
 SoftwareSerial nextion(2, 3);
@@ -67,9 +67,9 @@ String stepInstruction[]={""};
  */
 
 
-// --------------------------------- //
-// Setup                             //
-// --------------------------------- //
+/**********************************
+  Setup
+***********************************/
 
 void setup() {
   Serial.begin(9600);
@@ -105,9 +105,9 @@ void setup() {
 
 
 
-// --------------------------------- //
-// Main loop                         //
-// --------------------------------- //
+/**********************************
+  Main loop
+***********************************/
 
 void loop() {
 
@@ -126,9 +126,9 @@ void loop() {
 }
 
 
-// --------------------------------- //
-// Display / screen functions        //
-// --------------------------------- //
+/**********************************
+  Display / screen functions
+***********************************/
 
 
 void screenDone() {
@@ -383,27 +383,27 @@ void screenHome() {
 }
 
 
-// --------------------------------- //
-// Cocktail-instruction loop         //
-// --------------------------------- //
+/**********************************
+  Cocktail-instruction loop
+***********************************/
 
 void makeCurrentCocktail() {
 
 /*
-  cocktailloop;
+  As a reminder, here's how we structured
+  the cocktail information:
 
-
-      steps = 6;
-      byte stepType[6]={0,0,0,0,1,1};
-      byte stepTypeMeasurement[6]={0,0,0,0,50,60};
-      String stepInstruction[6]={
-        "Divide a lime into eights and add it."
-        "Add 2 teaspoons of brown sugar.",
-        "Add 8 leaves of mint. Pestle the contents.",
-        "Fill glass with crushed ice.",
-        "Add 5cl white rum.",
-        "Add 6cl soda."
-      };
+  steps = 6;
+  byte stepType[6]={0,0,0,0,1,1};
+  byte stepTypeMeasurement[6]={0,0,0,0,50,60};
+  String stepInstruction[6]={
+    "Divide a lime into eights and add it."
+    "Add 2 teaspoons of brown sugar.",
+    "Add 8 leaves of mint. Pestle the contents.",
+    "Fill glass with crushed ice.",
+    "Add 5cl white rum.",
+    "Add 6cl soda."
+  };
 
 */
 
@@ -427,7 +427,7 @@ void makeCurrentCocktail() {
     
   } else {
     
-    // we're in the making of something great ;)
+    // we're still in the making of something great ;)
 
     // check if we need to refresh the screen
     if (instruction <= cocktailloop) {
@@ -450,9 +450,9 @@ void makeCurrentCocktail() {
       instruction++;
     }
 
-    // we're waiting for the correct weight
+    // check what we're waiting for
     if (stepType[cocktailloop] == 1) {
-
+      // we're waiting for the correct weight
       float weight = scale.get_units(1);
       previous_percentage = percentage;
       percentage = weight/stepTypeMeasurement[cocktailloop]*100;
@@ -473,8 +473,7 @@ void makeCurrentCocktail() {
       }
       
     } else {
-    // we're waiting for a button press
-
+      // we're waiting for a button press
       String input = listenDisplay();
       if (input == "65 2 4 0 ffff ffff ffff") {
         sendTone("buzz");
@@ -491,9 +490,11 @@ void makeCurrentCocktail() {
 
 
 
-// --------------------------------- //
-// General functions                 //
-// --------------------------------- //
+/**********************************
+  General functions
+***********************************/
+
+// Wait for touch input
 
 String listenDisplay() {
   String message = myNextion.listen();
@@ -503,6 +504,8 @@ String listenDisplay() {
   }
 }
 
+
+// Make the beeper output the selected melody
 
 void sendTone(String melody) {
   if (melody == "buzz") {
@@ -525,9 +528,11 @@ void sendTone(String melody) {
 }
 
 
-// --------------------------------- //
-// EEPROM                            //
-// --------------------------------- //
+/**********************************
+  EEPROM function
+***********************************/
+
+// Taken from https://playground.arduino.cc/Code/EEPROMWriteAnything
 
 template <class T> int EEPROM_writeAnything(int ee, const T& value)
 {
