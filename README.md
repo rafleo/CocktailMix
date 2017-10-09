@@ -31,11 +31,20 @@ Fire up the Arduino IDE and add both Arduino libraries to the IDE by adding them
 
 Now load the *CocktailMix.ino*, check the configuration for the correct pinout and then upload the sketch to your Arduino board.
 
+Once it's up and running, click the cog icon on the start screen of the CocktailMix to tare your scale. You will require an object weighing exactly 1kg. (A package of sugar works nicely, for example.) You should only need to do this once. The result is then stored in EEPROM.
+
 ## Known Issues
 
 The `screenMix()` function has not been fully tested yet and it may not work.
 
 The **Arduino Nano** does not have enough memory to cope with the recipes and the required Arrays, so a rewrite to manual steps with if-Statements is necessary to run the CocktailMix on it.
 
-If you continually send commands to the Nextion display in a loop (e.g. `myNextion.setComponentText("instruction", "test value");` on every loop cycle) it will start to return garbled serial messages and thus become unusable (it's then impossible to detect touch events, for example). If your serial window shows output like `DISPLAY: ¿¿¿¿` you will need to check your functions for looped requestst to the display. 
+If you continually send commands to the Nextion display in a loop (e.g. `myNextion.setComponentText("instruction", "test value");` on every loop cycle) it will start to return garbled serial messages and thus become unusable (it's then impossible to detect touch events, for example). If your serial window shows output like `DISPLAY: ¿¿¿¿` you will need to check your functions for looped requests to the display. 
 
+## Roadmap
+
+What'd be nice to implement in the future:
+
+- Load recipes from storage, e.g. from an SD card.
+- Ability to 'scroll' through recipes on the start screen.
+- Download cocktail recipes from an online service with an API (over WiFi) and store them on the SD card.
