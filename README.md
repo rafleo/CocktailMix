@@ -31,3 +31,11 @@ Fire up the Arduino IDE and add both Arduino libraries to the IDE by adding them
 
 Now load the *CocktailMix.ino*, check the configuration for the correct pinout and then upload the sketch to your Arduino board.
 
+## Known Issues
+
+The `screenMix()` function has not been fully tested yet and it may not work.
+
+The **Arduino Nano** does not have enough memory to cope with the recipes and the required Arrays, so a rewrite to manual steps with if-Statements is necessary to run the CocktailMix on it.
+
+If you continually send commands to the Nextion display in a loop (e.g. `myNextion.setComponentText("instruction", "test value");` on every loop cycle) it will start to return garbled serial messages and thus become unusable (it's then impossible to detect touch events, for example). If your serial window shows output like `DISPLAY: ¿¿¿¿` you will need to check your functions for looped requestst to the display. 
+
